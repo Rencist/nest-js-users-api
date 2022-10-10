@@ -4,6 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './typeorm/entities/User';
 import { UsersModule } from './users/users.module';
+import { MoviesController } from './movies/controllers/movies/movies.controller';
+import { MoviesService } from './movies/services/movies/movies.service';
+import { Movie } from './typeorm/entities/Movie';
+import { MoviesModule } from './movies/movies.module';
 
 @Module({
   imports: [
@@ -14,10 +18,11 @@ import { UsersModule } from './users/users.module';
       username: 'root',
       password: '',
       database: 'urara',
-      entities: [User],
+      entities: [User, Movie],
       synchronize: true,
     }),
     UsersModule,
+    MoviesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
